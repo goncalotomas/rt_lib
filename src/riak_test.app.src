@@ -1,0 +1,21 @@
+{application, riak_test,
+ [
+  {description, ""},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  lager
+                 ]},
+  {env, [
+    {platform, undefined},
+    {rt_scratch_dir, "/tmp/riak_test_scratch"},
+    {rt_max_wait_time, 180000},
+    {rt_retry_delay, 500},
+    {rt_harness, rtdev},
+    {java, [{fat_be_url, "http://riak-java-client.s3.amazonaws.com/riak-client-1.4.2-jar-with-dependencies-and-tests.jar"},
+            {tests_url, "http://riak-java-client.s3.amazonaws.com/riak-client-1.4.2-tests.jar"}
+    ]}
+  ]}
+ ]}.
