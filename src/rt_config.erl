@@ -80,8 +80,9 @@ set(Key, Value) ->
 get(Key) ->
     case kvc:path(Key, application:get_all_env(riak_test)) of
         [] ->
-            lager:warning("Missing configuration key: ~p", [Key]),
-            erlang:error("Missing configuration key", [Key]);
+            ErrorMsg = io_lib:format("Missing configuration key: ~p", [Key]),
+            lager:warning(ErrorMsg, []),
+            erlang:error(ErrorMsg, [Key]);
         Value ->
             Value
     end.
