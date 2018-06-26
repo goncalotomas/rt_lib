@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_core_connection_intercepts).
--compile(export_all).
+-export([return_econnrefused/2, sync_connect/2]).
 -include("intercept.hrl").
 
 -define(M, riak_core_connection_orig).

@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl_aae_source_intercepts).
--compile(export_all).
+-export([delayed_get_reply/1, really_delayed_get_reply/1]).
 -include("intercept.hrl").
 
 -define(M, riak_repl_aae_source_orig).

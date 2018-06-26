@@ -18,7 +18,7 @@
 %
 %% -------------------------------------------------------------------
 -module(riak_kv_js_manager_intercepts).
--compile(export_all).
+-export([verify_console_reload/1]).
 -include("intercept.hrl").
 
 %% See tests/riak_admin_console_tests.erl for more info
@@ -35,4 +35,3 @@ verify_console_reload(Val) ->
         ["foo","bar","baz"] -> ?PASS;
         _ -> ?FAIL
     end.
-

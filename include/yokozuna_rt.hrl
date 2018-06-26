@@ -16,17 +16,10 @@
 %% specific language governing permissions and limitations
 %% under the License.
 %%
-%%-------------------------------------------------------------------
+%% -------------------------------------------------------------------
+-type index_name() :: binary().
+-type schema_name() :: string().
+-type raw_schema() :: binary().
+-type bucket() :: bucket() | {bucket(), bucket()}.
 
--module(riak_repl_ring_handler_intercepts).
--export([slow_handle_event/2]).
--include("intercept.hrl").
-
--define(M, riak_repl_ring_handler_orig).
-
-%% @doc Make all commands take abnormally long.
-slow_handle_event(Event, State) ->
-    io:format("slow handle event triggered by intercept", []),
-    ?I_INFO("slow handle event triggered by intercept"),
-    timer:sleep(500),
-    ?M:handle_event_orig(Event, State).
+-define(IBROWSE_TIMEOUT, 60000).

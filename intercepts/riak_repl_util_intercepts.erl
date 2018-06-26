@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl_util_intercepts).
--compile(export_all).
+-export([interval_check_v3/3, interval_check_v2/1]).
 -include("intercept.hrl").
 
 -define(M, riak_repl_util_orig).
@@ -51,7 +51,7 @@ interval_check_v3(Pid, FullsyncIvalMins, Cluster) ->
 %% intercept calls to riak_repl_util:schedule_fullsync,
 %% which is used for v2 repl
 %% don't sleep, but see if the interval in app:env is correct
-%% the test that uses this intercept specifies a single 
+%% the test that uses this intercept specifies a single
 %% interval (99 minutes) for all sink clusters.
 %% run fullsync after checking interval
 interval_check_v2(Pid) ->
@@ -62,4 +62,3 @@ interval_check_v2(Pid) ->
               ok;
         _ -> throw("Invalid interval specified for v2 replication")
     end.
-

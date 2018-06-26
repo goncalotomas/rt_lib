@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_ensemble_peer_intercepts).
--compile(export_all).
+-export([count_leader_ticks/1]).
 -include("intercept.hrl").
 
 -define(M, riak_ensemble_peer_orig).

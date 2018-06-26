@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(hashtree_intercepts).
--compile(export_all).
+-export([sleep_update_perform/1]).
 -include("intercept.hrl").
 
 sleep_update_perform(State) ->

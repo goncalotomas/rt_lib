@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_kv_index_hashtree_intercepts).
--compile(export_all).
+-export([delayed_compare/4, not_built/4, already_locked/4, bad_version/4]).
 -include("intercept.hrl").
 
 -define(M, riak_kv_index_hashtree_orig).

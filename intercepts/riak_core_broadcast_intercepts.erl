@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_core_broadcast_intercepts).
--compile(export_all).
+-export([global_send/2]).
 -include("intercept.hrl").
 
 global_send(Msg, Peers) when is_list(Peers) ->

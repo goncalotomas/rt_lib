@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(init_intercepts).
--compile(export_all).
+-export([get_status/0]).
 -include("intercept.hrl").
 -define(M, init_orig).
 

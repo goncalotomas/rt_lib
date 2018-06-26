@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_core_ring_manager_intercepts).
--compile(export_all).
+-export([noop_ring_trans/2]).
 -include("intercept.hrl").
 
 noop_ring_trans(_Fun, _Args) ->

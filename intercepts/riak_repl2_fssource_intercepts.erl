@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl2_fssource_intercepts).
--compile(export_all).
+-export([slow_handle_info/2, really_slow_handle_info/2]).
 -include("intercept.hrl").
 
 -define(M, riak_repl2_fssource_orig).

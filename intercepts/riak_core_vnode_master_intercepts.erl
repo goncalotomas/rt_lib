@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_core_vnode_master_intercepts).
--compile(export_all).
+-export([stop_vnode_after_bloom_fold_request_succeeds/4]).
 -include("intercept.hrl").
 
 -record(riak_core_fold_req_v2, {
@@ -37,8 +37,8 @@ stop_vnode_after_bloom_fold_request_succeeds(IndexNode, Req, Sender, VMaster) ->
 
     case (ReqFun == fun riak_repl_aae_source:bloom_fold/3 orelse ReqFun == fun riak_repl_keylist_server:bloom_fold/3) of
         true ->
-            random:seed(erlang:now()),
-            case random:uniform(10) of
+            rand:seed(exs1024s),
+            case rand:uniform(10) of
                 5 ->
                     %% Simulate what happens when a VNode completes handoff between command_returning_vnode
                     %% and the fold attempting to start - other attempts to intercept and slow

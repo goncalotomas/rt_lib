@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl_console_intercepts).
--compile(export_all).
+-compile([export_all, nowarn_export_all]).
 -include("intercept.hrl").
 
 -define(M, riak_repl_console_orig).
@@ -151,4 +151,3 @@ verify_show_local_cluster_id(Val) ->
         [] -> ?PASS;
         _ -> ?FAIL
     end.
-

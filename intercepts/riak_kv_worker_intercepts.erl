@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_kv_worker_intercepts).
--compile(export_all).
+-export([handle_work_intercept/3]).
 -include("intercept.hrl").
 -define(M, riak_kv_worker_orig).
 

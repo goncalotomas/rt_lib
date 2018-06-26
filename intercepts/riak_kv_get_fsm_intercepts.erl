@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_kv_get_fsm_intercepts).
--compile(export_all).
+-export([count_start_4/4, slow_prepare/2]).
 -include("intercept.hrl").
 -define(M, riak_kv_get_fsm_orig).
 

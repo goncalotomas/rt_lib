@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_core_vnode_proxy_sup_intercepts).
--compile(export_all).
+-export([sleep_start_proxies/1]).
 -include("intercept.hrl").
 -define(M, riak_core_vnode_proxy_sup_orig).
 
@@ -29,4 +29,3 @@ sleep_start_proxies(Mod=riak_kv_vnode) ->
     ?M:start_proxies_orig(Mod);
 sleep_start_proxies(Mod) ->
     ?M:start_proxies_orig(Mod).
-

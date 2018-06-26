@@ -48,7 +48,7 @@
 %% The skipped output will still be added to the results list.
 -module(rt_pipe_sink_fsm).
 
--behaviour(gen_fsm).
+-behaviour(gen_fsm_compat).
 
 %% API
 -export([start_link/1,
@@ -85,10 +85,10 @@ start_link(PipeRef) ->
     start_link(PipeRef, []).
 
 start_link(PipeRef, Options) ->
-    gen_fsm:start_link(?MODULE, [PipeRef, Options], []).
+    gen_fsm_compat:start_link(?MODULE, [PipeRef, Options], []).
 
 get_results(Sink) ->
-    gen_fsm:sync_send_event(Sink, get_results).
+    gen_fsm_compat:sync_send_event(Sink, get_results).
 
 %%%===================================================================
 %%% gen_fsm callbacks
@@ -111,7 +111,7 @@ acc(#pipe_eoi{ref=Ref}, #state{ref=Ref}=State) ->
         undefined ->
             {next_state, wait, State};
         From ->
-            gen_fsm:reply(From, results(State)),
+            gen_fsm_compat:reply(From, results(State)),
             {stop, normal, State}
     end;
 acc(_, State) ->
@@ -147,7 +147,7 @@ acc(#pipe_eoi{ref=Ref}, _From, #state{ref=Ref}=State) ->
         undefined ->
             {reply, ok, wait, State};
         From ->
-            gen_fsm:reply(From, results(State)),
+            gen_fsm_compat:reply(From, results(State)),
             {stop, normal, ok, State}
     end;
 acc(get_results, From, State) ->
@@ -182,7 +182,7 @@ code_change(_OldVsn, StateName, State, _Extra) ->
 %%%===================================================================
 
 results(#state{results=Results, logs=Logs}) ->
-     {eoi, lists:reverse(Results), lists:reverse(Logs)}.    
+     {eoi, lists:reverse(Results), lists:reverse(Logs)}.
 
 should_skip_ack(From, Result, #state{opts=Opts}) ->
     SkipList = proplists:get_value(skip_ack, Opts, []),

@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl2_leader_intercepts).
--compile(export_all).
+-export([leader_server/1, set_leader_node/1, set_leader_node/3]).
 -include("intercept.hrl").
 
 -define(M, riak_repl2_leader_orig).

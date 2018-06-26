@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_pipe_vnode_intercepts).
--compile(export_all).
+-export([log_handoff_command/3]).
 -include("intercept.hrl").
 
 -define(M, riak_pipe_vnode_orig).
@@ -42,4 +42,3 @@ log_handoff_command(Cmd, Sender, State) ->
             ?I_INFO("Collector process not registered")
     end,
     ?M:handle_handoff_command_orig(Cmd, Sender, State).
-

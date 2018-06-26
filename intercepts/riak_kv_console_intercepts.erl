@@ -18,7 +18,7 @@
 %
 %% -------------------------------------------------------------------
 -module(riak_kv_console_intercepts).
--compile(export_all).
+-compile([export_all, nowarn_export_all]).
 -include("intercept.hrl").
 
 %% See tests/riak_admin_console_tests.erl for more info
@@ -160,4 +160,3 @@ verify_console_reformat_objects(Val) ->
         ["true","1"] -> ?PASS;
         _ -> ?FAIL
     end.
-

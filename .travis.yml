@@ -1,0 +1,9 @@
+sudo: false
+dist: trusty
+language: erlang
+otp_release:
+  - R16B02
+before_script:
+  - epmd -daemon
+script:
+  - ./rebar3 compile

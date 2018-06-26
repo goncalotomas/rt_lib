@@ -19,7 +19,7 @@
 %%-------------------------------------------------------------------
 
 -module(riak_repl2_fs_node_reserver_intercepts).
--compile(export_all).
+-export([down_reserve/3]).
 -include("intercept.hrl").
 
 -define(M, riak_repl2_fs_node_reserver_orig).
